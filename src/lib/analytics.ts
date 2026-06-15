@@ -1,11 +1,13 @@
-const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID;
-const GA_ID = import.meta.env.VITE_GA_ID;
+// Meta Pixel id je javan — fallback drži tracking radnim i bez env vars na Vercelu.
+const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID || "1493711514989751";
+const GA_ID = import.meta.env.VITE_GA_ID || "";
 
 let initialized = false;
 
 export function initAnalytics() {
   if (initialized || typeof window === "undefined") return;
   initialized = true;
+  try {
 
   if (PIXEL_ID) {
     (function (f: any, b: Document, e: string, v: string) {
@@ -41,9 +43,16 @@ export function initAnalytics() {
     gtag("js", new Date());
     gtag("config", GA_ID);
   }
+  } catch (e) {
+    console.warn("[analytics] init failed:", e);
+  }
 }
 
 export function trackLead() {
-  window.fbq?.("track", "Lead");
-  window.gtag?.("event", "generate_lead", { currency: "EUR", value: 1 });
+  try {
+    window.fbq?.("track", "Lead");
+    window.gtag?.("event", "generate_lead", { currency: "EUR", value: 1 });
+  } catch (e) {
+    console.warn("[analytics] trackLead failed:", e);
+  }
 }

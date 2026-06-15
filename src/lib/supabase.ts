@@ -1,11 +1,21 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const url = import.meta.env.VITE_SUPABASE_URL;
-const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
+// Javni Supabase project URL i publishable anon key — namjerno hardkodirani
+// kao fallback da deploy radi i bez env vars (anon key je dizajniran da bude javan;
+// pristup je ograničen RLS politikama). VITE_* env vars i dalje override-aju.
+const FALLBACK_URL = "https://egwtrsfcobwybcnbqsok.supabase.co";
+const FALLBACK_KEY = "sb_publishable_vNzkPSikbc9v5lAkpl8BOQ_QjjXn-wc";
 
-export const supabase = createClient(url, key, {
-  auth: { persistSession: false },
-});
+const url = import.meta.env.VITE_SUPABASE_URL || FALLBACK_URL;
+const key = import.meta.env.VITE_SUPABASE_ANON_KEY || FALLBACK_KEY;
+
+let client: SupabaseClient | null = null;
+export function getSupabase(): SupabaseClient {
+  if (!client) {
+    client = createClient(url, key, { auth: { persistSession: false } });
+  }
+  return client;
+}
 
 export type PhotoBoothLead = {
   name: string;

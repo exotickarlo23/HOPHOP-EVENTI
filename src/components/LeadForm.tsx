@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase, type PhotoBoothLead } from "../lib/supabase";
+import { getSupabase, type PhotoBoothLead } from "../lib/supabase";
 import { trackLead } from "../lib/analytics";
 import { SITE } from "../lib/site";
 
@@ -56,7 +56,7 @@ export function LeadForm() {
       package: form.package || null,
       message: form.message || null,
     };
-    const { error } = await supabase.from("photobooth_leads").insert(payload);
+    const { error } = await getSupabase().from("photobooth_leads").insert(payload);
     if (error) {
       console.error(error);
       setState("error");
