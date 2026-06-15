@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#ff3366" />
+
+    <title>Najam photo bootha Zagreb | Hop Hop Photo Booth</title>
+    <meta
+      name="description"
+      content="Najam 360 bootha i magic mirrora za svadbe, rođendane i korporativne evente u Zagrebu. Dostava, postavljanje i operater uključeni. Cijene od 250 €."
+    />
+    <meta
+      name="keywords"
+      content="photo booth najam Zagreb, 360 booth vjenčanje, fotokabina najam, magic mirror Zagreb, photo booth svadba, najam fotokabine Zagreb"
+    />
+    <link rel="canonical" href="https://hophop-photo-booth.netlify.app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:locale" content="hr_HR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hop Hop Photo Booth" />
+    <meta property="og:title" content="Najam photo bootha Zagreb | Hop Hop Photo Booth" />
+    <meta
+      property="og:description"
+      content="360 booth i magic mirror za svadbe, rođendane i korporativne evente. Dostava, postavljanje i operater uključeni. Cijene od 250 €."
+    />
+    <meta property="og:url" content="https://hophop-photo-booth.netlify.app/" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <!-- [UREDI: og-image.jpg — 1200x630 hero shot bootha s evenata] -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Najam photo bootha Zagreb | Hop Hop Photo Booth" />
+    <meta
+      name="twitter:description"
+      content="360 booth i magic mirror za svadbe, rođendane i korporativne evente u Zagrebu."
+    />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <!-- Fontovi: [UREDI: zamijeni s istim fontovima kao napuhanci repo] -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD: LocalBusiness + Service -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://hophop-photo-booth.netlify.app/#business",
+        "name": "Hop Hop Photo Booth",
+        "image": "https://hophop-photo-booth.netlify.app/og-image.jpg",
+        "url": "https://hophop-photo-booth.netlify.app/",
+        "telephone": "+385958655213",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Lanište 26",
+          "addressLocality": "Zagreb",
+          "postalCode": "10020",
+          "addressCountry": "HR"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Zagreb" }
+        ],
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "08:00",
+          "closes": "22:00"
+        },
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Hop Hop Eventi"
+        },
+        "sameAs": [
+          "https://hophop-napuhanci.com"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Paketi najma photo bootha",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Basic",
+              "priceCurrency": "EUR",
+              "price": "250",
+              "itemOffered": { "@type": "Service", "name": "360 Photo Booth najam — 3 sata" }
+            },
+            {
+              "@type": "Offer",
+              "name": "Standard",
+              "priceCurrency": "EUR",
+              "price": "400",
+              "itemOffered": { "@type": "Service", "name": "Magic Mirror najam — 4 sata" }
+            },
+            {
+              "@type": "Offer",
+              "name": "Premium",
+              "priceCurrency": "EUR",
+              "price": "600",
+              "itemOffered": { "@type": "Service", "name": "Magic Mirror + 360 — 5 sati + hostesa" }
+            }
+          ]
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Najam photo bootha",
+        "provider": { "@id": "https://hophop-photo-booth.netlify.app/#business" },
+        "areaServed": { "@type": "City", "name": "Zagreb" },
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "EUR",
+          "lowPrice": "250",
+          "highPrice": "600"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Meta Pixel — inicijaliziran iz src/lib/analytics.ts -->
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=1493711514989751&ev=PageView&noscript=1"
+        alt=""
+      />
+    </noscript>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-cream text-ink-900 font-sans antialiased;
+    font-feature-settings: "ss01", "cv01";
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-ink-900;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-bold px-6 py-3 text-base transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-200;
+  }
+  .btn-primary {
+    @apply btn bg-brand-500 text-white shadow-soft hover:bg-brand-600;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-ink-900 border-2 border-ink-900/10 hover:border-ink-900/30 shadow-card;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-900 hover:bg-ink-900/5;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-white/80 backdrop-blur px-3 py-1 text-sm font-semibold text-ink-700 ring-1 ring-ink-900/5;
+  }
+  .card {
+    @apply rounded-3xl bg-white shadow-card ring-1 ring-ink-900/5;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+  .eyebrow {
+    @apply inline-block text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-brand-600;
+  }
+  .h1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05];
+  }
+  .h2 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight;
+  }
+  .h3 {
+    @apply text-xl sm:text-2xl font-bold leading-snug;
+  }
+  .lead {
+    @apply text-lg sm:text-xl text-ink-700 leading-relaxed;
+  }
+}
+
+/* mali helper za hero pozadinske blob-ove */
+.blob {
+  filter: blur(50px);
+  opacity: 0.55;
+  will-change: transform;
+}
