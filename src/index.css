@@ -8,11 +8,12 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-cream text-ink-900 font-sans antialiased;
-    font-feature-settings: "ss01", "cv01";
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+    overscroll-behavior: none;
   }
   h1, h2, h3, h4 {
-    @apply font-display tracking-tight text-ink-900;
+    @apply font-display tracking-tight text-foreground;
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -26,31 +27,38 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-bold px-6 py-3 text-base transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-bold px-6 py-3 text-base transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary-200;
   }
+  /* Primarni CTA: žuto kao na napuhanci heru — visoka uočljivost */
   .btn-primary {
-    @apply btn bg-brand-500 text-white shadow-soft hover:bg-brand-600;
+    @apply btn bg-warning-500 text-warning-foreground shadow-playful hover:bg-warning-400 hover:shadow-mascot;
   }
+  /* Sekundarni: bijeli s plavim outline */
   .btn-secondary {
-    @apply btn bg-white text-ink-900 border-2 border-ink-900/10 hover:border-ink-900/30 shadow-card;
+    @apply btn bg-white text-primary-600 border-2 border-primary-200 hover:border-primary-400 hover:bg-primary-50 shadow-card;
+  }
+  /* Gradient gumb (koristi se u headeru i CTA sekcijama) */
+  .btn-gradient {
+    @apply btn text-white shadow-playful hover:shadow-mascot;
+    background-image: linear-gradient(135deg, #0EA5E9, #38bdf8);
   }
   .btn-ghost {
-    @apply btn bg-transparent text-ink-900 hover:bg-ink-900/5;
+    @apply btn bg-transparent text-foreground hover:bg-primary-50;
   }
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full bg-white/80 backdrop-blur px-3 py-1 text-sm font-semibold text-ink-700 ring-1 ring-ink-900/5;
+    @apply inline-flex items-center gap-1.5 rounded-full bg-white/80 backdrop-blur px-3 py-1 text-sm font-semibold text-foreground ring-1 ring-black/5;
   }
   .card {
-    @apply rounded-3xl bg-white shadow-card ring-1 ring-ink-900/5;
+    @apply rounded-2xl bg-white shadow-card ring-1 ring-black/5 border border-border;
   }
   .container-x {
     @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
   }
   .section {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-16 sm:py-20;
   }
   .eyebrow {
-    @apply inline-block text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-brand-600;
+    @apply inline-block text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-primary-600;
   }
   .h1 {
     @apply text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05];
@@ -62,11 +70,38 @@
     @apply text-xl sm:text-2xl font-bold leading-snug;
   }
   .lead {
-    @apply text-lg sm:text-xl text-ink-700 leading-relaxed;
+    @apply text-lg sm:text-xl text-muted-foreground leading-relaxed;
   }
 }
 
-/* mali helper za hero pozadinske blob-ove */
+@layer utilities {
+  .gradient-primary {
+    background-image: linear-gradient(135deg, #0EA5E9, #38bdf8);
+  }
+  .gradient-secondary {
+    background-image: linear-gradient(135deg, #ED3F39, #f87171);
+  }
+  .gradient-fun {
+    background-image: linear-gradient(135deg, #0EA5E9, #ED3F39, #FCBC2C);
+  }
+  .gradient-hero {
+    background-image: linear-gradient(135deg, #0EA5E9, #ED3F39);
+  }
+  /* Glass-blue Hero pozadina (svijetlo plava translucentna) */
+  .glass-blue {
+    background-color: rgba(173, 216, 230, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(173, 216, 230, 0.3);
+  }
+  .mascot-hover {
+    transition: transform 0.3s ease;
+  }
+  .mascot-hover:hover {
+    transform: scale(1.05) rotate(2deg);
+  }
+}
+
+/* Mali helper za blur pozadinske krugove */
 .blob {
   filter: blur(50px);
   opacity: 0.55;
