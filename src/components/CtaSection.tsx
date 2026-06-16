@@ -3,29 +3,48 @@ import { SITE } from "../lib/site";
 
 export function CtaSection() {
   return (
-    <section id="ponuda" className="section bg-gradient-to-br from-brand-50 to-cream">
-      <div className="container-x">
+    <section id="ponuda" className="section bg-background relative overflow-hidden">
+      {/* Suptilne dekoracije */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="blob absolute -top-20 -left-16 h-64 w-64 rounded-full bg-primary-200" />
+        <div className="blob absolute bottom-0 right-0 h-72 w-72 rounded-full bg-secondary-200" />
+      </div>
+
+      <div className="container-x relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <span className="eyebrow">Rezervacija</span>
+          <h2 className="h2 mt-3">
+            Rezervirajte svoj <span className="text-primary-500">termin</span>
+          </h2>
+          <p className="lead mt-4">
+            Recite nam datum i lokaciju — ponudu šaljemo isti dan.
+          </p>
+        </div>
+
         <div className="grid lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
-            <span className="eyebrow">Rezervacija</span>
-            <h2 className="h2 mt-3">Rezervirajte svoj termin</h2>
-            <p className="lead mt-4">
-              Recite nam datum i lokaciju — ponudu šaljemo isti dan.
-            </p>
-
-            <div className="mt-8 space-y-4">
-              <ContactRow icon={<PhoneIcon />} label="Telefon">
-                <a className="font-bold text-ink-900 underline-offset-2 hover:underline" href={`tel:${SITE.phoneIntl}`}>
+            <div className="space-y-4">
+              <ContactRow icon={<PhoneIcon />} label="Telefon" iconBg="bg-primary-100" iconColor="text-primary-600">
+                <a
+                  className="font-bold text-foreground underline-offset-2 hover:underline"
+                  href={`tel:${SITE.phoneIntl}`}
+                >
                   {SITE.phone}
                 </a>
               </ContactRow>
-              <ContactRow icon={<MailIcon />} label="Email">
-                <a className="font-bold text-ink-900 underline-offset-2 hover:underline" href={`mailto:${SITE.email}`}>
+              <ContactRow icon={<MailIcon />} label="Email" iconBg="bg-secondary-100" iconColor="text-secondary-600">
+                <a
+                  className="font-bold text-foreground underline-offset-2 hover:underline"
+                  href={`mailto:${SITE.email}`}
+                >
                   {SITE.email}
                 </a>
               </ContactRow>
-              <ContactRow icon={<PinIcon />} label="Područje">
-                <span className="font-bold text-ink-900">Zagreb i okolica</span>
+              <ContactRow icon={<PinIcon />} label="Područje" iconBg="bg-accent-100" iconColor="text-accent-700">
+                <span className="font-bold text-foreground">Zagreb i okolica</span>
+              </ContactRow>
+              <ContactRow icon={<ClockIcon />} label="Odgovor" iconBg="bg-warning-100" iconColor="text-warning-700">
+                <span className="font-bold text-foreground">U roku 24h</span>
               </ContactRow>
             </div>
 
@@ -33,7 +52,7 @@ export function CtaSection() {
               href={SITE.whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 font-bold text-white shadow-soft hover:brightness-105 transition"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 font-bold text-white shadow-playful hover:brightness-105 hover:shadow-mascot transition"
             >
               <WhatsAppIcon className="h-5 w-5" />
               WhatsApp / Viber
@@ -48,14 +67,26 @@ export function CtaSection() {
   );
 }
 
-function ContactRow({ icon, label, children }: { icon: React.ReactNode; label: string; children: React.ReactNode }) {
+function ContactRow({
+  icon,
+  label,
+  children,
+  iconBg,
+  iconColor,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  children: React.ReactNode;
+  iconBg: string;
+  iconColor: string;
+}) {
   return (
-    <div className="flex items-center gap-3">
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-brand-600 ring-1 ring-ink-900/5">
+    <div className="flex items-start gap-4">
+      <span className={`inline-flex h-12 w-12 flex-none items-center justify-center rounded-full ${iconBg} ${iconColor}`}>
         {icon}
       </span>
       <div className="flex flex-col">
-        <span className="text-xs font-semibold uppercase tracking-wider text-ink-500">{label}</span>
+        <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</span>
         {children}
       </div>
     </div>
@@ -82,6 +113,14 @@ function PinIcon() {
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
       <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z" />
       <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+function ClockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 6v6l4 2" />
     </svg>
   );
 }

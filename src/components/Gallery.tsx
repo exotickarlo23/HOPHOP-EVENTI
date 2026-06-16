@@ -1,24 +1,28 @@
 // [UREDI: zamijeni placeholder kartice s pravim TikTok/Reels embedovima ili video tagovima]
-const CLIPS = Array.from({ length: 9 }, (_, i) => ({ id: i, hue: 320 + i * 12 }));
+const CLIPS = Array.from({ length: 9 }, (_, i) => ({ id: i, hue: 196 + i * 20 }));
 
 export function Gallery() {
   return (
-    <section id="galerija" className="section">
+    <section id="galerija" className="section bg-background">
       <div className="container-x">
-        <div className="max-w-3xl">
+        <div className="text-center max-w-3xl mx-auto">
           <span className="eyebrow">Galerija</span>
-          <h2 className="h2 mt-3">Pogledajte kako to izgleda</h2>
+          <h2 className="h2 mt-3">
+            Pogledajte kako to <span className="text-primary-500">izgleda</span>
+          </h2>
           <p className="lead mt-4">
             Pravi clipovi s evenata — svadbe, rođendani, korporativne proslave.
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
           {CLIPS.map((c) => (
             <figure
               key={c.id}
-              className="relative aspect-[9/16] overflow-hidden rounded-2xl ring-1 ring-ink-900/5 bg-ink-900"
-              style={{ background: `linear-gradient(135deg, hsl(${c.hue} 80% 55%), hsl(${(c.hue + 40) % 360} 80% 50%))` }}
+              className="relative aspect-[9/16] overflow-hidden rounded-2xl ring-1 ring-black/5 hover:-translate-y-1 hover:shadow-playful transition-all duration-300"
+              style={{
+                background: `linear-gradient(135deg, hsl(${c.hue} 80% 55%), hsl(${(c.hue + 40) % 360} 80% 50%))`,
+              }}
               aria-label={`Placeholder clip ${c.id + 1}`}
             >
               <div className="absolute inset-0 grid place-items-center text-white/90">

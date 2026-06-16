@@ -70,8 +70,8 @@ export function LeadForm() {
     return (
       <div className="card p-8 sm:p-10 text-center">
         <div aria-hidden className="text-5xl">🎉</div>
-        <h3 className="mt-4 font-display text-2xl font-bold text-ink-900">Hvala!</h3>
-        <p className="mt-2 text-ink-700">
+        <h3 className="mt-4 font-display text-2xl font-bold text-foreground">Hvala!</h3>
+        <p className="mt-2 text-muted-foreground">
           Javljamo se s ponudom najkasnije u roku 24h.
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -194,7 +194,7 @@ export function LeadForm() {
       >
         {state === "submitting" ? "Šaljem…" : "Zatraži ponudu"}
       </button>
-      <p className="mt-3 text-xs text-ink-500 text-center">
+      <p className="mt-3 text-xs text-muted-foreground text-center">
         Slanjem prihvaćate da vas kontaktiramo s ponudom. Bez spama.
       </p>
     </form>
@@ -216,19 +216,19 @@ function Field({
 }) {
   return (
     <label className={`block ${className}`}>
-      <span className="text-sm font-semibold text-ink-700">
-        {label} {required && <span className="text-brand-600">*</span>}
+      <span className="text-sm font-semibold text-foreground">
+        {label} {required && <span className="text-secondary-600">*</span>}
       </span>
       <div className="mt-1.5">{children}</div>
-      {error && <span className="mt-1 block text-xs font-semibold text-red-600">{error}</span>}
+      {error && <span className="mt-1 block text-xs font-semibold text-secondary-600">{error}</span>}
     </label>
   );
 }
 
 function inputClass(error?: string) {
-  return `w-full rounded-2xl border-2 px-4 py-3 text-base text-ink-900 bg-white placeholder:text-ink-400 transition focus:outline-none focus:ring-4 ${
+  return `w-full rounded-2xl border-2 px-4 py-3 text-base text-foreground bg-white placeholder:text-muted-foreground transition focus:outline-none focus:ring-4 ${
     error
-      ? "border-red-300 focus:ring-red-100"
-      : "border-ink-900/10 focus:border-brand-400 focus:ring-brand-100"
+      ? "border-secondary-300 focus:ring-secondary-100"
+      : "border-border focus:border-primary-400 focus:ring-primary-100"
   }`;
 }

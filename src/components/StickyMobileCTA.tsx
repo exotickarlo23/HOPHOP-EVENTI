@@ -3,15 +3,11 @@ import { SITE } from "../lib/site";
 export function StickyMobileCTA() {
   return (
     <div
-      className="fixed bottom-0 inset-x-0 z-40 md:hidden border-t border-ink-900/10 bg-white/95 backdrop-blur"
+      className="fixed bottom-0 inset-x-0 z-40 md:hidden border-t border-border bg-white/95 backdrop-blur"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="grid grid-cols-2 gap-2 p-2">
-        <a
-          className="btn-secondary justify-center"
-          href={`tel:${SITE.phoneIntl}`}
-          aria-label="Nazovi"
-        >
+        <a className="btn-secondary justify-center" href={`tel:${SITE.phoneIntl}`} aria-label="Nazovi">
           <PhoneIcon className="h-4 w-4" /> Nazovi
         </a>
         <a className="btn-primary justify-center" href="#ponuda">
