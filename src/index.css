@@ -87,11 +87,13 @@
   .gradient-hero {
     background-image: linear-gradient(135deg, #0EA5E9, #ED3F39);
   }
-  /* Glass-blue Hero pozadina (svijetlo plava translucentna) */
+  /* Glass-blue Hero pozadina (svijetlo plava — vidljivija nego napuhanci jer nemamo iza tamniju sekciju) */
   .glass-blue {
-    background-color: rgba(173, 216, 230, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(173, 216, 230, 0.3);
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(14, 165, 233, 0.18), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(252, 188, 44, 0.15), transparent 60%),
+      radial-gradient(900px 500px at 50% 100%, rgba(237, 63, 57, 0.12), transparent 60%),
+      linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 60%, #ffffff 100%);
   }
   .mascot-hover {
     transition: transform 0.3s ease;
